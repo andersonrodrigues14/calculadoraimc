@@ -1,5 +1,6 @@
 package com.comunidadedevspace.imc
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
@@ -24,10 +25,15 @@ class MainActivity : AppCompatActivity() {
                 Snackbar.make(edtPeso, "Preencha todos os campos", Snackbar.LENGTH_LONG).show()
             } else {
                 val peso = pesoStr.toFloat()
-                val altura = pesoStr.toFloat()
+                val altura = alturaStr.toFloat()
 
-                val alturaQ1: Float = altura * altura
-                val result: Float = peso / alturaQ1
+                val alturaQ1 = altura * altura
+                val result = peso / alturaQ1
+
+                val intent = Intent(this, ResultActivity::class.java)
+                intent.putExtra(KEY_RESULT_IMC, result)
+                startActivity(intent)
+
             }
         }
     }
